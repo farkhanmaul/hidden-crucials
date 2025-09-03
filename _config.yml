@@ -1,6 +1,6 @@
 # Site settings
 title: "Hidden Crucials"
-description: "A collection of thoughts, insights, and discoveries"
+description: "Repository konsep fundamental untuk digital wisdom dan personal growth"
 url: "https://farkhanmaul.github.io"
 baseurl: "/hidden-crucials"
 author: "Farkhan Maul"
@@ -41,7 +41,7 @@ defaults:
 navigation:
   - title: "Home"
     url: "/"
-  - title: "All Posts"
+  - title: "All Content"
     url: "/posts/"
   - title: "Categories"
     url: "/categories/"

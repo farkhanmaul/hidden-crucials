@@ -1,15 +1,15 @@
 ---
 layout: home
-title: "Welcome to Hidden Crucials"
+title: "Hidden Crucials"
 ---
 
 # Hidden Crucials
 
-A space for thoughts, insights, and discoveries that matter but might be overlooked.
+Repository konsep dan insight yang sering terabaikan namun fundamental dalam navigasi kehidupan digital dan personal growth.
 
-This is a collection of writings, observations, and ideas that don't follow a specific order or sequence. Each piece stands on its own, ready to be discovered when you need it most.
+Dokumentasi ini berisi fragmen pemikiran, observasi, dan framework yang dapat digunakan sebagai referensi untuk pengembangan diri dan optimasi interaksi digital.
 
-## Recent Posts
+## Recent Insights
 
 <div class="posts">
   {% for post in site.posts limit:5 %}
@@ -21,4 +21,4 @@ This is a collection of writings, observations, and ideas that don't follow a sp
   {% endfor %}
 </div>
 
-<a href="{{ '/posts/' | relative_url }}" class="button">View All Posts</a>
+<a href="{{ '/posts/' | relative_url }}" class="button">Browse All Content</a>

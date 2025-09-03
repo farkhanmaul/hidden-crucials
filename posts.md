@@ -1,12 +1,12 @@
 ---
 layout: default
-title: "All Posts"
+title: "All Content"
 permalink: /posts/
 ---
 
-# All Posts
+# All Content
 
-A complete list of all thoughts, insights, and discoveries, sorted by most recent.
+Complete repository semua konsep dan insight, diurutkan berdasarkan publikasi terbaru.
 
 <div class="posts">
   {% for post in site.posts %}
@@ -34,5 +34,5 @@ A complete list of all thoughts, insights, and discoveries, sorted by most recen
 </div>
 
 {% if site.posts.size == 0 %}
-  <p>No posts yet. Check back soon!</p>
+  <p>Repository sedang dalam tahap development. Konten akan segera tersedia.</p>
 {% endif %}
