@@ -1,0 +1,64 @@
+# Site settings
+title: "Hidden Crucials"
+description: "A collection of thoughts, insights, and discoveries"
+url: "https://farkhanmaul.github.io"
+baseurl: "/hidden-crucials"
+author: "Farkhan Maul"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+timezone: Asia/Jakarta
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-paginate
+
+# Pagination
+paginate: 5
+paginate_path: "/page:num/"
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /:categories/:title/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      comments: true
+
+# Navigation
+navigation:
+  - title: "Home"
+    url: "/"
+  - title: "All Posts"
+    url: "/posts/"
+  - title: "Categories"
+    url: "/categories/"
+  - title: "About"
+    url: "/about/"
+
+# Theme settings
+theme_color: "#2c3e50"
+accent_color: "#3498db"
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md
