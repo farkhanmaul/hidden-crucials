@@ -1,0 +1,48 @@
+main:
+  - title: "Getting Started"
+    url: "/getting-started/"
+    children:
+      - title: "Introduction"
+        url: "/getting-started/introduction/"
+      - title: "Philosophy"
+        url: "/getting-started/philosophy/"
+  
+  - title: "Digital Wisdom"
+    url: "/digital-wisdom/"
+    children:
+      - title: "Social Media Strategy"
+        url: "/digital-wisdom/social-media/"
+      - title: "Information Diet"
+        url: "/digital-wisdom/information-diet/"
+      - title: "Digital Minimalism"
+        url: "/digital-wisdom/minimalism/"
+  
+  - title: "Cognitive Frameworks"
+    url: "/cognitive-frameworks/"
+    children:
+      - title: "Mental Models"
+        url: "/cognitive-frameworks/mental-models/"
+      - title: "Decision Making"
+        url: "/cognitive-frameworks/decision-making/"
+      - title: "Systems Thinking"
+        url: "/cognitive-frameworks/systems-thinking/"
+  
+  - title: "Personal Systems"
+    url: "/personal-systems/"
+    children:
+      - title: "Productivity Methods"
+        url: "/personal-systems/productivity/"
+      - title: "Learning Systems"
+        url: "/personal-systems/learning/"
+      - title: "Habit Design"
+        url: "/personal-systems/habits/"
+  
+  - title: "Social Dynamics"
+    url: "/social-dynamics/"
+    children:
+      - title: "Network Effects"
+        url: "/social-dynamics/networks/"
+      - title: "Communication Patterns"
+        url: "/social-dynamics/communication/"
+      - title: "Influence & Persuasion"
+        url: "/social-dynamics/influence/"

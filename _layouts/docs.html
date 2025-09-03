@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ "/assets/css/docs.css" | relative_url }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <title>{% if page.title %}{{ page.title | escape }} | {% endif %}{{ site.title | escape }}</title>
+  <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
+  {% seo %}
+  {% feed_meta %}
+</head>
+
+<body class="docs-layout">
+  <!-- Header -->
+  <header class="docs-header">
+    <div class="docs-header-content">
+      <button class="mobile-menu-toggle" aria-label="Toggle navigation">
+        <span class="hamburger"></span>
+      </button>
+      
+      <a href="{{ "/" | relative_url }}" class="docs-logo">
+        <span class="docs-logo-text">{{ site.title }}</span>
+      </a>
+      
+      <div class="docs-header-actions">
+        <div class="search-container">
+          <input type="search" id="docs-search" placeholder="Search docs..." aria-label="Search">
+          <div class="search-icon">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21 21-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+          </div>
+        </div>
+        
+        <button class="theme-toggle" aria-label="Toggle theme">
+          <svg class="theme-toggle-sun" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.414a.5.5 0 1 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+          </svg>
+          <svg class="theme-toggle-moon" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Layout -->
+  <div class="docs-container">
+    <!-- Sidebar -->
+    <nav class="docs-sidebar">
+      <div class="docs-sidebar-content">
+        {% for section in site.data.navigation.main %}
+          <div class="nav-section">
+            <div class="nav-section-title">
+              <a href="{{ section.url | relative_url }}">{{ section.title }}</a>
+            </div>
+            {% if section.children %}
+              <ul class="nav-section-items">
+                {% for item in section.children %}
+                  <li class="nav-item">
+                    <a href="{{ item.url | relative_url }}" class="nav-link">{{ item.title }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="docs-main">
+      <!-- Breadcrumb -->
+      {% if page.breadcrumb != false %}
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <ol class="breadcrumb-list">
+            <li class="breadcrumb-item">
+              <a href="{{ "/" | relative_url }}">Home</a>
+            </li>
+            {% if page.category %}
+              <li class="breadcrumb-item">
+                <a href="{{ page.category_url | default: "#" | relative_url }}">{{ page.category }}</a>
+              </li>
+            {% endif %}
+            <li class="breadcrumb-item active" aria-current="page">
+              {{ page.title }}
+            </li>
+          </ol>
+        </nav>
+      {% endif %}
+
+      <!-- Article Content -->
+      <article class="docs-article">
+        <header class="docs-article-header">
+          <h1 class="docs-article-title">{{ page.title }}</h1>
+          {% if page.description %}
+            <p class="docs-article-description">{{ page.description }}</p>
+          {% endif %}
+          {% if page.date %}
+            <div class="docs-article-meta">
+              <time datetime="{{ page.date | date_to_xmlschema }}">
+                {{ page.date | date: "%B %d, %Y" }}
+              </time>
+            </div>
+          {% endif %}
+        </header>
+
+        <div class="docs-content">
+          {{ content }}
+        </div>
+
+        <!-- Navigation -->
+        {% if page.nav != false %}
+          <nav class="docs-nav" aria-label="Article navigation">
+            {% if page.prev %}
+              <a href="{{ page.prev.url | relative_url }}" class="docs-nav-prev">
+                <span class="docs-nav-label">Previous</span>
+                <span class="docs-nav-title">{{ page.prev.title }}</span>
+              </a>
+            {% endif %}
+            {% if page.next %}
+              <a href="{{ page.next.url | relative_url }}" class="docs-nav-next">
+                <span class="docs-nav-label">Next</span>
+                <span class="docs-nav-title">{{ page.next.title }}</span>
+              </a>
+            {% endif %}
+          </nav>
+        {% endif %}
+      </article>
+    </main>
+
+    <!-- Table of Contents -->
+    <aside class="docs-toc">
+      <div class="docs-toc-content">
+        <h4 class="docs-toc-title">On this page</h4>
+        <div id="toc-container"></div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Scripts -->
+  <script src="{{ "/assets/js/docs.js" | relative_url }}"></script>
+</body>
+</html>
