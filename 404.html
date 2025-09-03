@@ -1,0 +1,232 @@
+---
+layout: docs
+title: "Page Not Found"
+description: "The page you're looking for doesn't exist"
+breadcrumb: false
+permalink: /404.html
+---
+
+<div class="error-404">
+  <div class="error-illustration">
+    <div class="donut-loader">
+      <div class="donut-segment"></div>
+    </div>
+  </div>
+  
+  <div class="error-content">
+    <h1 class="error-title">404</h1>
+    <h2 class="error-subtitle">Page Not Found</h2>
+    <p class="error-description">
+      The page you're looking for seems to have wandered off into the digital void. 
+      It might have been moved, deleted, or perhaps it never existed in the first place.
+    </p>
+    
+    <div class="error-actions">
+      <a href="{{ "/" | relative_url }}" class="error-button error-button-primary">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+        </svg>
+        Go Home
+      </a>
+      
+      <button onclick="history.back()" class="error-button error-button-secondary">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+          <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+        </svg>
+        Go Back
+      </button>
+    </div>
+    
+    <div class="error-suggestions">
+      <h3>Try these instead:</h3>
+      <ul class="suggestion-list">
+        <li><a href="{{ "/getting-started/" | relative_url }}">Getting Started Guide</a></li>
+        <li><a href="{{ "/digital-wisdom/" | relative_url }}">Digital Wisdom</a></li>
+        <li><a href="{{ "/cognitive-frameworks/" | relative_url }}">Cognitive Frameworks</a></li>
+        <li><a href="{{ "/posts/" | relative_url }}">Browse All Content</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<style>
+.error-404 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 600px;
+  margin: 4rem auto;
+  padding: 2rem;
+}
+
+.error-illustration {
+  margin-bottom: 2rem;
+}
+
+.donut-loader {
+  width: 120px;
+  height: 120px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.donut-segment {
+  width: 100%;
+  height: 100%;
+  border: 8px solid var(--color-border);
+  border-radius: 50%;
+  border-top: 8px solid #dc2626;
+  border-right: 8px solid #dc2626;
+  border-bottom: 8px solid #dc2626;
+  border-left: 8px solid transparent;
+  animation: donut-spin 2s linear infinite;
+}
+
+@keyframes donut-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error-title {
+  font-size: 4rem;
+  font-weight: 800;
+  color: var(--color-red-500);
+  margin: 0 0 0.5rem 0;
+  line-height: 1;
+}
+
+.error-subtitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 1rem 0;
+}
+
+.error-description {
+  font-size: 1.125rem;
+  color: var(--color-text-secondary);
+  margin: 0 0 2rem 0;
+  line-height: 1.6;
+}
+
+.error-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.error-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 0.875rem;
+}
+
+.error-button-primary {
+  background-color: var(--color-red-500);
+  color: white;
+}
+
+.error-button-primary:hover {
+  background-color: var(--color-red-600);
+  transform: translateY(-1px);
+}
+
+.error-button-secondary {
+  background-color: transparent;
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+}
+
+.error-button-secondary:hover {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text);
+  border-color: var(--color-border-light);
+}
+
+.error-suggestions {
+  width: 100%;
+}
+
+.error-suggestions h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 1rem 0;
+}
+
+.suggestion-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.5rem;
+}
+
+.suggestion-list li {
+  margin: 0;
+}
+
+.suggestion-list a {
+  display: block;
+  padding: 0.75rem 1rem;
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: var(--transition);
+  font-size: 0.875rem;
+}
+
+.suggestion-list a:hover {
+  background-color: var(--color-bg-tertiary);
+  color: var(--color-link);
+  border-color: var(--color-link);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 640px) {
+  .error-404 {
+    margin: 2rem auto;
+    padding: 1rem;
+  }
+  
+  .error-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .suggestion-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .donut-loader {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .donut-segment {
+    border-width: 6px;
+    border-top: 6px solid #dc2626;
+    border-right: 6px solid #dc2626;
+    border-bottom: 6px solid #dc2626;
+    border-left: 6px solid transparent;
+  }
+  
+  .error-title {
+    font-size: 3rem;
+  }
+}
+</style>
