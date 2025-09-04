@@ -1,48 +1,19 @@
 main:
-  - title: "Getting Started"
-    url: "/getting-started/"
+  - title: "Start"
     children:
-      - title: "Introduction"
-        url: "/getting-started/introduction/"
+      - title: "Getting Started"
+        url: "/getting-started/"
       - title: "Philosophy"
         url: "/getting-started/philosophy/"
   
-  - title: "Digital Wisdom"
-    url: "/digital-wisdom/"
+  - title: "Digital"
     children:
-      - title: "Social Media Strategy"
+      - title: "Social Media Paradox"
         url: "/digital-wisdom/social-media/"
       - title: "Information Diet"
         url: "/digital-wisdom/information-diet/"
-      - title: "Digital Minimalism"
-        url: "/digital-wisdom/minimalism/"
   
-  - title: "Cognitive Frameworks"
-    url: "/cognitive-frameworks/"
+  - title: "Mental"
     children:
-      - title: "Mental Models"
+      - title: "Essential Models"
         url: "/cognitive-frameworks/mental-models/"
-      - title: "Decision Making"
-        url: "/cognitive-frameworks/decision-making/"
-      - title: "Systems Thinking"
-        url: "/cognitive-frameworks/systems-thinking/"
-  
-  - title: "Personal Systems"
-    url: "/personal-systems/"
-    children:
-      - title: "Productivity Methods"
-        url: "/personal-systems/productivity/"
-      - title: "Learning Systems"
-        url: "/personal-systems/learning/"
-      - title: "Habit Design"
-        url: "/personal-systems/habits/"
-  
-  - title: "Social Dynamics"
-    url: "/social-dynamics/"
-    children:
-      - title: "Network Effects"
-        url: "/social-dynamics/networks/"
-      - title: "Communication Patterns"
-        url: "/social-dynamics/communication/"
-      - title: "Influence & Persuasion"
-        url: "/social-dynamics/influence/"

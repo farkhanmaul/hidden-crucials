@@ -9,7 +9,13 @@
       "Bash(git push:*)",
       "Bash(git branch:*)",
       "Bash(git fetch:*)",
-      "Bash(export:*)"
+      "Bash(export:*)",
+      "Read(/D:\\Personal Project\\hidden-crucials\\assets\\css/**)",
+      "Read(/D:\\Personal Project\\hidden-crucials\\_data/**)",
+      "Read(/D:\\Personal Project\\hidden-crucials\\getting-started/**)",
+      "Read(/D:\\Personal Project\\hidden-crucials\\assets\\icons/**)",
+      "Read(/D:\\Personal Project\\hidden-crucials\\assets\\icons/**)",
+      "Read(/D:\\Personal Project\\hidden-crucials\\_layouts/**)"
     ],
     "deny": [],
     "ask": []

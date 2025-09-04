@@ -1,9 +1,10 @@
 ---
 layout: docs
 title: "Getting Started"
-description: "An introduction to navigating the hidden patterns that shape digital-age existence"
+description: "Navigate hidden patterns that shape digital existence with practical frameworks for modern life"
 category: "Getting Started"
 breadcrumb: false
+keywords: "digital wisdom, mental models, hidden patterns, practical frameworks, systems thinking"
 ---
 
 # Getting Started

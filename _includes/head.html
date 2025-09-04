@@ -1,0 +1,39 @@
+<!-- Meta Tags -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="{{ "/assets/icons/favicon.svg" | relative_url }}">
+<link rel="alternate icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='15' fill='%23f8fafc'/><path d='M 16 16 L 16 4 A 12 12 0 1 1 5.196 21.392 L 10.598 18.696 A 6 6 0 1 0 16 10 Z' fill='%23dc2626'/><circle cx='16' cy='16' r='6' fill='%23ffffff'/></svg>">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- Styles -->
+<link rel="stylesheet" href="{{ "/assets/css/docs.css" | relative_url }}">
+
+<!-- SEO Meta -->
+{% capture page_title %}{% if page.title %}{{ page.title | escape }} - {{ site.title | escape }}{% else %}{{ site.title | escape }} - {{ site.description | escape }}{% endif %}{% endcapture %}
+<title>{{ page_title }}</title>
+<meta name="description" content="{{ page.description | default: page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
+<meta name="keywords" content="{{ page.keywords | default: page.tags | join: ', ' | default: 'digital wisdom, mental models, cognitive frameworks, productivity, systems thinking' }}">
+<meta name="author" content="{{ site.author | default: 'Hidden Crucials' }}">
+<link rel="canonical" href="{{ page.url | absolute_url }}">
+
+<!-- Open Graph -->
+<meta property="og:title" content="{{ page.title | default: site.title }}">
+<meta property="og:description" content="{{ page.description | default: page.excerpt | default: site.description | strip_html | truncate: 160 }}">
+<meta property="og:type" content="{% if page.date %}article{% else %}website{% endif %}">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+<meta property="og:site_name" content="{{ site.title }}">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ page.title | default: site.title }}">
+<meta name="twitter:description" content="{{ page.description | default: page.excerpt | default: site.description | strip_html | truncate: 160 }}">
+
+{% seo %}
+{% feed_meta %}
