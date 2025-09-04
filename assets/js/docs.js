@@ -9,6 +9,7 @@
     constructor() {
       this.themeToggle = document.querySelector('.theme-toggle');
       this.currentTheme = localStorage.getItem('theme') || 'light';
+      this.themes = ['light', 'dark', 'reading'];
       
       this.init();
     }
@@ -16,12 +17,13 @@
     init() {
       this.setTheme(this.currentTheme);
       this.bindEvents();
+      this.updateThemeIcon();
     }
 
     bindEvents() {
       if (this.themeToggle) {
         this.themeToggle.addEventListener('click', () => {
-          this.toggleTheme();
+          this.cycleTheme();
         });
       }
     }
@@ -30,11 +32,39 @@
       document.documentElement.setAttribute('data-theme', theme);
       localStorage.setItem('theme', theme);
       this.currentTheme = theme;
+      this.updateThemeIcon();
     }
 
-    toggleTheme() {
-      const newTheme = this.currentTheme === 'light' ? 'dark' : 'light';
-      this.setTheme(newTheme);
+    cycleTheme() {
+      const currentIndex = this.themes.indexOf(this.currentTheme);
+      const nextIndex = (currentIndex + 1) % this.themes.length;
+      this.setTheme(this.themes[nextIndex]);
+    }
+
+    updateThemeIcon() {
+      if (!this.themeToggle) return;
+      
+      const sunIcon = this.themeToggle.querySelector('.theme-toggle-sun');
+      const moonIcon = this.themeToggle.querySelector('.theme-toggle-moon');
+      const readingIcon = this.themeToggle.querySelector('.theme-toggle-reading');
+      
+      // Hide all icons
+      [sunIcon, moonIcon, readingIcon].forEach(icon => {
+        if (icon) icon.style.display = 'none';
+      });
+      
+      // Show appropriate icon
+      switch (this.currentTheme) {
+        case 'light':
+          if (sunIcon) sunIcon.style.display = 'block';
+          break;
+        case 'dark':
+          if (moonIcon) moonIcon.style.display = 'block';
+          break;
+        case 'reading':
+          if (readingIcon) readingIcon.style.display = 'block';
+          break;
+      }
     }
   }
 

@@ -1,26 +1,44 @@
-# Site settings
+# Site settings - Optimized for performance
 title: "Hidden Crucials"
-description: "Repository konsep fundamental untuk digital wisdom dan personal growth"
+description: "A field guide to the patterns that shape digital-age existence"
 url: "https://farkhanmaul.github.io"
 baseurl: "/hidden-crucials"
 author: "Farkhan Maul"
 
-# Build settings
+# Build settings - Performance optimized
 markdown: kramdown
 highlighter: rouge
 permalink: pretty
 timezone: Asia/Jakarta
+
+# Performance settings
+incremental: true
+strict_front_matter: false
+liquid:
+  error_mode: warn
+  strict_filters: false
+  strict_variables: false
+
+# Kramdown settings for performance
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false
+    span:
+      line_numbers: false
+
+# Sass settings for CSS optimization
+sass:
+  style: compressed
+  sourcemap: never
 
 # Plugins
 plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
-  - jekyll-paginate
-
-# Pagination
-paginate: 5
-paginate_path: "/page:num/"
 
 # Collections
 collections:
@@ -34,25 +52,14 @@ defaults:
       path: ""
       type: "posts"
     values:
-      layout: "post"
-      comments: true
+      layout: "docs"
+      author: "Hidden Crucials"
+  - scope:
+      path: ""
+    values:
+      layout: "docs"
 
-# Navigation
-navigation:
-  - title: "Home"
-    url: "/"
-  - title: "All Content"
-    url: "/posts/"
-  - title: "Categories"
-    url: "/categories/"
-  - title: "About"
-    url: "/about/"
-
-# Theme settings
-theme_color: "#2c3e50"
-accent_color: "#3498db"
-
-# Exclude from processing
+# Exclude from processing - Performance optimization
 exclude:
   - Gemfile
   - Gemfile.lock
@@ -61,4 +68,24 @@ exclude:
   - vendor/cache/
   - vendor/gems/
   - vendor/ruby/
+  - assets/css/docs.css
+  - assets/js/docs.js
   - README.md
+  - LICENSE
+  - "*.log"
+
+# Include critical files
+include:
+  - sw.js
+  - _redirects
+
+# HTML compression for production
+compress_html:
+  clippings: all
+  comments: ["<!-- ", " -->"]
+  endings: all
+  ignore:
+    envs: [development]
+  blanklines: false
+  profile: false
+  startings: [html, head, body]

@@ -2,18 +2,28 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#dc2626">
+
+<!-- Performance hints -->
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="dns-prefetch" href="//fonts.gstatic.com">
+
+<!-- Preload critical resources -->
+<link rel="preload" href="{{ "/assets/css/docs.min.css" | relative_url }}" as="style">
+<link rel="preload" href="{{ "/assets/js/docs.min.js" | relative_url }}" as="script">
 
 <!-- Favicon -->
-<link rel="icon" type="image/svg+xml" href="{{ "/assets/icons/favicon.svg" | relative_url }}">
-<link rel="alternate icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='15' fill='%23f8fafc'/><path d='M 16 16 L 16 4 A 12 12 0 1 1 5.196 21.392 L 10.598 18.696 A 6 6 0 1 0 16 10 Z' fill='%23dc2626'/><circle cx='16' cy='16' r='6' fill='%23ffffff'/></svg>">
+<link rel="icon" type="image/svg+xml" href="{{ "/assets/icons/favicon-optimized.svg" | relative_url }}">
 
-<!-- Fonts -->
+<!-- Fonts - Optimized loading -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
 
-<!-- Styles -->
-<link rel="stylesheet" href="{{ "/assets/css/docs.css" | relative_url }}">
+<!-- Styles - Minified for performance -->
+<link rel="preload" href="{{ "/assets/css/docs.min.css" | relative_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="{{ "/assets/css/docs.min.css" | relative_url }}"></noscript>
 
 <!-- SEO Meta -->
 {% capture page_title %}{% if page.title %}{{ page.title | escape }} - {{ site.title | escape }}{% else %}{{ site.title | escape }} - {{ site.description | escape }}{% endif %}{% endcapture %}
