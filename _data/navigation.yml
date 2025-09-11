@@ -1,19 +1,32 @@
 main:
-  - title: "Start"
+  - title: "Getting Started"
+    url: "/getting-started/"
     children:
-      - title: "Getting Started"
+      - title: "Introduction"
         url: "/getting-started/"
-      - title: "Philosophy"
-        url: "/getting-started/philosophy/"
-  
-  - title: "Digital"
+      - title: "Markdown Examples"
+        url: "/getting-started/markdown-examples/"
+
+  - title: "Articles"
+    url: "/articles/"
     children:
-      - title: "Social Media Paradox"
-        url: "/digital-wisdom/social-media/"
-      - title: "Information Diet"
-        url: "/digital-wisdom/information-diet/"
-  
-  - title: "Mental"
+      - title: "All Articles"
+        url: "/articles/"
+      - title: "Digital Wisdom"
+        url: "/articles/#digital-wisdom"
+      - title: "Cognitive Frameworks"
+        url: "/articles/#cognitive-frameworks"
+      - title: "Personal Systems"  
+        url: "/articles/#personal-systems"
+      - title: "Social Dynamics"
+        url: "/articles/#social-dynamics"
+
+  - title: "Browse"
+    url: "/browse/"
     children:
-      - title: "Essential Models"
-        url: "/cognitive-frameworks/mental-models/"
+      - title: "By Category"
+        url: "/browse/categories/"
+      - title: "By Tags"
+        url: "/browse/tags/"
+      - title: "Archive"
+        url: "/browse/archive/"

@@ -45,12 +45,22 @@ collections:
   posts:
     output: true
     permalink: /:categories/:title/
+  articles:
+    output: true
+    permalink: /articles/:name/
+    sort_by: date
 
 # Defaults
 defaults:
   - scope:
       path: ""
       type: "posts"
+    values:
+      layout: "docs"
+      author: "Hidden Crucials"
+  - scope:
+      path: ""
+      type: "articles"
     values:
       layout: "docs"
       author: "Hidden Crucials"

@@ -24,7 +24,8 @@
       "Read(/D:\\Personal Project\\hidden-crucials\\assets\\icons/**)",
       "Read(/D:\\Personal Project\\hidden-crucials/**)",
       "Bash(bundle exec jekyll:*)",
-      "Bash(jekyll build)"
+      "Bash(jekyll build)",
+      "Bash(chmod:*)"
     ],
     "deny": [],
     "ask": []
