@@ -78,8 +78,6 @@ exclude:
   - vendor/cache/
   - vendor/gems/
   - vendor/ruby/
-  - assets/css/docs.css
-  - assets/js/docs.js
   - README.md
   - LICENSE
   - "*.log"
@@ -88,6 +86,9 @@ exclude:
 include:
   - sw.js
   - _redirects
+  - assets/css/perfected.css
+  - assets/js/docs.min.js
+  - assets/js/advanced-features.js
 
 # HTML compression for production
 compress_html:
