@@ -1,24 +1,9 @@
-// Service Worker for Hidden Crucials - Perfected Cache Strategy
-const CACHE_NAME = 'hidden-crucials-perfected-v2';
-const BASE_URL = '/hidden-crucials';
-const CACHE_URLS = [
-  `${BASE_URL}/`,
-  `${BASE_URL}/assets/css/perfected.css`,
-  `${BASE_URL}/assets/js/docs.min.js`,
-  `${BASE_URL}/assets/js/advanced-features.js`,
-  `${BASE_URL}/assets/icons/favicon-optimized.svg`,
-  `${BASE_URL}/articles.html`,
-  `${BASE_URL}/dashboard.html`,
-  `${BASE_URL}/about.html`
-];
+// Service Worker for Hidden Crucials - Minimal & Robust
+const CACHE_NAME = 'hidden-crucials-v4';
 
-// Install event - cache resources
+// Install - just activate immediately without pre-caching
 self.addEventListener('install', event => {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(CACHE_URLS))
-      .then(() => self.skipWaiting())
-  );
+  event.waitUntil(self.skipWaiting());
 });
 
 // Activate event - cleanup old caches
@@ -38,32 +23,42 @@ self.addEventListener('activate', event => {
   );
 });
 
-// Fetch event - serve from cache, fallback to network
+// Fetch event - cache-first strategy with runtime caching
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
   
   event.respondWith(
     caches.match(event.request)
       .then(response => {
-        // Return cached version or fetch from network
-        return response || fetch(event.request)
-          .then(fetchResponse => {
-            // Cache new resources
-            const responseClone = fetchResponse.clone();
-            caches.open(CACHE_NAME)
-              .then(cache => {
-                if (event.request.url.startsWith(self.location.origin)) {
-                  cache.put(event.request, responseClone);
-                }
-              });
-            return fetchResponse;
-          });
-      })
-      .catch(() => {
-        // Fallback for offline
-        if (event.request.destination === 'document') {
-          return caches.match(`${BASE_URL}/`);
+        if (response) {
+          return response; // Return cached version
         }
+        
+        // Fetch from network and cache for future
+        return fetch(event.request)
+          .then(fetchResponse => {
+            // Only cache successful responses
+            if (fetchResponse && fetchResponse.status === 200) {
+              const responseClone = fetchResponse.clone();
+              caches.open(CACHE_NAME)
+                .then(cache => {
+                  // Only cache same-origin requests
+                  if (event.request.url.startsWith(self.location.origin)) {
+                    cache.put(event.request, responseClone);
+                  }
+                })
+                .catch(() => {
+                  // Ignore cache errors
+                });
+            }
+            return fetchResponse;
+          })
+          .catch(() => {
+            // Network failed - try to return a cached fallback
+            if (event.request.destination === 'document') {
+              return caches.match('/') || new Response('Offline', { status: 503 });
+            }
+          });
       })
   );
 });
