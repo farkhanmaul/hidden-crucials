@@ -207,7 +207,8 @@
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
+        navigator.serviceWorker.register('{{ "/sw.js" | relative_url }}')
+          .then(() => console.log('SW registered successfully'))
           .catch(() => console.log('SW registration failed'));
       });
     }

@@ -1,13 +1,15 @@
-// Service Worker for Hidden Crucials - Cache Strategy
-const CACHE_NAME = 'hidden-crucials-v1';
+// Service Worker for Hidden Crucials - Perfected Cache Strategy
+const CACHE_NAME = 'hidden-crucials-perfected-v2';
+const BASE_URL = '/hidden-crucials';
 const CACHE_URLS = [
-  '/',
-  '/assets/css/docs.min.css',
-  '/assets/js/docs.min.js',
-  '/assets/icons/favicon-optimized.svg',
-  '/getting-started/',
-  '/getting-started/markdown-examples/',
-  // Add other static resources
+  `${BASE_URL}/`,
+  `${BASE_URL}/assets/css/perfected.css`,
+  `${BASE_URL}/assets/js/docs.min.js`,
+  `${BASE_URL}/assets/js/advanced-features.js`,
+  `${BASE_URL}/assets/icons/favicon-optimized.svg`,
+  `${BASE_URL}/articles.html`,
+  `${BASE_URL}/dashboard.html`,
+  `${BASE_URL}/about.html`
 ];
 
 // Install event - cache resources
@@ -60,7 +62,7 @@ self.addEventListener('fetch', event => {
       .catch(() => {
         // Fallback for offline
         if (event.request.destination === 'document') {
-          return caches.match('/');
+          return caches.match(`${BASE_URL}/`);
         }
       })
   );
