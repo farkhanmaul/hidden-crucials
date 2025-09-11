@@ -1,0 +1,687 @@
+---
+layout: docs
+title: "Analytics Dashboard"
+description: "Article performance analytics and insights for Hidden Crucials"
+permalink: /dashboard/
+---
+
+<div class="dashboard-page">
+  <header class="dashboard-header">
+    <h1 class="dashboard-title">Analytics Dashboard</h1>
+    <p class="dashboard-description">
+      Insights and performance metrics for your articles and readers.
+    </p>
+  </header>
+
+  <!-- Summary Cards -->
+  <div class="dashboard-summary">
+    <div class="summary-card">
+      <div class="summary-icon">
+        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
+        </svg>
+      </div>
+      <div class="summary-content">
+        <div class="summary-value" id="total-articles">0</div>
+        <div class="summary-label">Total Articles</div>
+      </div>
+    </div>
+
+    <div class="summary-card">
+      <div class="summary-icon">
+        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+        </svg>
+      </div>
+      <div class="summary-content">
+        <div class="summary-value" id="total-reads">0</div>
+        <div class="summary-label">Total Reads</div>
+      </div>
+    </div>
+
+    <div class="summary-card">
+      <div class="summary-icon">
+        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="12,6 12,12 16,14"/>
+        </svg>
+      </div>
+      <div class="summary-content">
+        <div class="summary-value" id="avg-reading-time">0m</div>
+        <div class="summary-label">Avg Reading Time</div>
+      </div>
+    </div>
+
+    <div class="summary-card">
+      <div class="summary-icon">
+        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+        </svg>
+      </div>
+      <div class="summary-content">
+        <div class="summary-value" id="total-bookmarks">0</div>
+        <div class="summary-label">Bookmarked</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charts Section -->
+  <div class="dashboard-charts">
+    <div class="chart-container">
+      <h3 class="chart-title">Reading Activity (Last 7 Days)</h3>
+      <canvas id="reading-chart" width="400" height="200"></canvas>
+    </div>
+
+    <div class="chart-container">
+      <h3 class="chart-title">Popular Categories</h3>
+      <canvas id="category-chart" width="300" height="300"></canvas>
+    </div>
+  </div>
+
+  <!-- Top Articles Table -->
+  <div class="dashboard-table-container">
+    <h3 class="table-title">Top Performing Articles</h3>
+    <div class="table-wrapper">
+      <table class="dashboard-table">
+        <thead>
+          <tr>
+            <th>Article</th>
+            <th>Category</th>
+            <th>Reads</th>
+            <th>Avg. Progress</th>
+            <th>Avg. Time</th>
+            <th>Bookmarks</th>
+          </tr>
+        </thead>
+        <tbody id="articles-table-body">
+          <tr>
+            <td colspan="6" class="no-data">Loading analytics data...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Reading Trends -->
+  <div class="dashboard-trends">
+    <h3 class="trends-title">Reading Trends</h3>
+    <div class="trends-grid">
+      <div class="trend-item">
+        <div class="trend-label">Most Read Day</div>
+        <div class="trend-value" id="most-read-day">-</div>
+      </div>
+      <div class="trend-item">
+        <div class="trend-label">Peak Reading Hour</div>
+        <div class="trend-value" id="peak-hour">-</div>
+      </div>
+      <div class="trend-item">
+        <div class="trend-label">Average Session</div>
+        <div class="trend-value" id="avg-session">-</div>
+      </div>
+      <div class="trend-item">
+        <div class="trend-label">Completion Rate</div>
+        <div class="trend-value" id="completion-rate">-</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Export Options -->
+  <div class="dashboard-export">
+    <h3 class="export-title">Export Analytics</h3>
+    <div class="export-buttons">
+      <button class="export-btn" data-format="csv">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+        </svg>
+        CSV Report
+      </button>
+      <button class="export-btn" data-format="json">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M5,3H7V5H5V10A2,2 0 0,1 3,12A2,2 0 0,1 5,14V19H7V21H5C3.93,20.73 3,20.1 3,19V15A2,2 0 0,0 1,13H0V11H1A2,2 0 0,0 3,9V5A2,2 0 0,1 5,3M19,3A2,2 0 0,1 21,5V9A2,2 0 0,0 23,11H24V13H23A2,2 0 0,0 21,15V19A2,2 0 0,1 19,21H17V19H19V14A2,2 0 0,1 21,12A2,2 0 0,1 19,10V5H17V3H19Z"/>
+        </svg>
+        JSON Data
+      </button>
+      <button class="export-btn" data-format="pdf">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+        </svg>
+        PDF Report
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+.dashboard-page {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dashboard-header {
+  margin-bottom: var(--space-12);
+}
+
+.dashboard-title {
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-4);
+}
+
+.dashboard-description {
+  font-size: var(--text-lg);
+  color: var(--color-text-secondary);
+}
+
+.dashboard-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-6);
+  margin-bottom: var(--space-12);
+}
+
+.summary-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-xl);
+  transition: var(--transition-smooth);
+}
+
+.summary-card:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+.summary-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: var(--color-accent-subtle);
+  color: var(--color-accent);
+  border-radius: var(--radius-lg);
+}
+
+.summary-content {
+  flex: 1;
+}
+
+.summary-value {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-1);
+}
+
+.summary-label {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.dashboard-charts {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--space-8);
+  margin-bottom: var(--space-12);
+}
+
+.chart-container {
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+}
+
+.chart-title {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-4);
+}
+
+.dashboard-table-container {
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  margin-bottom: var(--space-12);
+}
+
+.table-title {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-6);
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.dashboard-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.dashboard-table th,
+.dashboard-table td {
+  padding: var(--space-3) var(--space-4);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.dashboard-table th {
+  background: var(--color-surface-subtle);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  color: var(--color-text-primary);
+}
+
+.dashboard-table td {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.dashboard-table tr:hover td {
+  background: var(--color-surface-subtle);
+}
+
+.no-data {
+  text-align: center;
+  padding: var(--space-8) !important;
+  color: var(--color-text-muted);
+}
+
+.dashboard-trends {
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  margin-bottom: var(--space-12);
+}
+
+.trends-title {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-6);
+}
+
+.trends-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-6);
+}
+
+.trend-item {
+  text-align: center;
+}
+
+.trend-label {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-2);
+}
+
+.trend-value {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
+.dashboard-export {
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+}
+
+.export-title {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-6);
+}
+
+.export-buttons {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.export-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-5);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+
+.export-btn:hover {
+  border-color: var(--color-accent);
+  color: var(--color-text-primary);
+  background: var(--color-accent-subtle);
+}
+
+@media (max-width: 768px) {
+  .dashboard-summary {
+    grid-template-columns: 1fr;
+  }
+  
+  .dashboard-charts {
+    grid-template-columns: 1fr;
+  }
+  
+  .trends-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .export-buttons {
+    flex-direction: column;
+  }
+  
+  .export-btn {
+    justify-content: center;
+  }
+}
+</style>
+
+<script>
+class AnalyticsDashboard {
+  constructor() {
+    this.analytics = JSON.parse(localStorage.getItem('reading-analytics') || '[]');
+    this.bookmarks = JSON.parse(localStorage.getItem('article-bookmarks') || '[]');
+    this.init();
+  }
+
+  init() {
+    this.updateSummaryCards();
+    this.renderCharts();
+    this.populateArticlesTable();
+    this.updateTrends();
+    this.bindExportEvents();
+  }
+
+  updateSummaryCards() {
+    // Total articles (mock data for demo)
+    document.getElementById('total-articles').textContent = '12';
+    
+    // Total reads
+    document.getElementById('total-reads').textContent = this.analytics.length.toLocaleString();
+    
+    // Average reading time
+    const avgTime = this.analytics.length > 0 
+      ? Math.round(this.analytics.reduce((sum, item) => sum + item.readingTime, 0) / this.analytics.length / 60)
+      : 0;
+    document.getElementById('avg-reading-time').textContent = `${avgTime}m`;
+    
+    // Total bookmarks
+    document.getElementById('total-bookmarks').textContent = this.bookmarks.length;
+  }
+
+  renderCharts() {
+    this.renderReadingChart();
+    this.renderCategoryChart();
+  }
+
+  renderReadingChart() {
+    const canvas = document.getElementById('reading-chart');
+    const ctx = canvas.getContext('2d');
+    
+    // Simple chart implementation (in real app, use Chart.js or similar)
+    const data = this.getReadingDataLast7Days();
+    const maxValue = Math.max(...data) || 1;
+    
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#6366f1';
+    ctx.strokeStyle = '#6366f1';
+    ctx.lineWidth = 3;
+    
+    const barWidth = canvas.width / 7;
+    const chartHeight = canvas.height - 40;
+    
+    data.forEach((value, index) => {
+      const barHeight = (value / maxValue) * chartHeight;
+      const x = index * barWidth + 20;
+      const y = canvas.height - barHeight - 20;
+      
+      // Draw bar
+      ctx.fillRect(x, y, barWidth - 10, barHeight);
+      
+      // Draw value label
+      ctx.fillStyle = '#374151';
+      ctx.font = '12px -apple-system, BlinkMacSystemFont, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(value.toString(), x + (barWidth - 10) / 2, y - 5);
+      ctx.fillStyle = '#6366f1';
+    });
+  }
+
+  renderCategoryChart() {
+    const canvas = document.getElementById('category-chart');
+    const ctx = canvas.getContext('2d');
+    
+    const categories = this.getCategoryData();
+    const total = Object.values(categories).reduce((sum, val) => sum + val, 0) || 1;
+    
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+    const radius = Math.min(centerX, centerY) - 20;
+    
+    let currentAngle = 0;
+    const colors = ['#6366f1', '#8b5cf6', '#ec4899', '#f59e0b'];
+    
+    Object.entries(categories).forEach(([category, count], index) => {
+      const sliceAngle = (count / total) * 2 * Math.PI;
+      
+      ctx.fillStyle = colors[index % colors.length];
+      ctx.beginPath();
+      ctx.moveTo(centerX, centerY);
+      ctx.arc(centerX, centerY, radius, currentAngle, currentAngle + sliceAngle);
+      ctx.fill();
+      
+      // Label
+      const labelAngle = currentAngle + sliceAngle / 2;
+      const labelX = centerX + Math.cos(labelAngle) * (radius + 15);
+      const labelY = centerY + Math.sin(labelAngle) * (radius + 15);
+      
+      ctx.fillStyle = '#374151';
+      ctx.font = '12px -apple-system, BlinkMacSystemFont, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(category, labelX, labelY);
+      
+      currentAngle += sliceAngle;
+    });
+  }
+
+  getReadingDataLast7Days() {
+    const today = new Date();
+    const data = new Array(7).fill(0);
+    
+    this.analytics.forEach(item => {
+      const itemDate = new Date(item.timestamp);
+      const daysDiff = Math.floor((today - itemDate) / (1000 * 60 * 60 * 24));
+      if (daysDiff >= 0 && daysDiff < 7) {
+        data[6 - daysDiff]++;
+      }
+    });
+    
+    return data;
+  }
+
+  getCategoryData() {
+    // Mock data for demo
+    return {
+      'Digital Wisdom': 5,
+      'Cognitive Frameworks': 3,
+      'Personal Systems': 2,
+      'Social Dynamics': 2
+    };
+  }
+
+  populateArticlesTable() {
+    const tbody = document.getElementById('articles-table-body');
+    
+    // Mock data for demo
+    const articles = [
+      {
+        title: 'Mengelola Informasi di Era Digital',
+        category: 'Digital Wisdom',
+        reads: 156,
+        avgProgress: 85,
+        avgTime: '7m 23s',
+        bookmarks: 23
+      },
+      {
+        title: 'Building Mental Models',
+        category: 'Cognitive Frameworks',
+        reads: 134,
+        avgProgress: 78,
+        avgTime: '6m 45s',
+        bookmarks: 19
+      },
+      {
+        title: 'Systems Thinking Basics',
+        category: 'Personal Systems',
+        reads: 98,
+        avgProgress: 82,
+        avgTime: '8m 12s',
+        bookmarks: 15
+      }
+    ];
+
+    tbody.innerHTML = articles.map(article => `
+      <tr>
+        <td>
+          <div style="font-weight: 600; color: var(--color-text-primary);">${article.title}</div>
+        </td>
+        <td>
+          <span style="background: var(--color-accent-subtle); color: var(--color-accent); padding: 0.25rem 0.5rem; border-radius: 0.375rem; font-size: 0.75rem; font-weight: 600;">
+            ${article.category}
+          </span>
+        </td>
+        <td>${article.reads.toLocaleString()}</td>
+        <td>
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <div style="flex: 1; height: 4px; background: var(--color-border-subtle); border-radius: 2px;">
+              <div style="width: ${article.avgProgress}%; height: 100%; background: var(--color-accent); border-radius: 2px;"></div>
+            </div>
+            <span style="font-size: 0.75rem; color: var(--color-text-muted);">${article.avgProgress}%</span>
+          </div>
+        </td>
+        <td>${article.avgTime}</td>
+        <td>${article.bookmarks}</td>
+      </tr>
+    `).join('');
+  }
+
+  updateTrends() {
+    // Mock data for demo
+    document.getElementById('most-read-day').textContent = 'Tuesday';
+    document.getElementById('peak-hour').textContent = '2:00 PM';
+    document.getElementById('avg-session').textContent = '12m 34s';
+    document.getElementById('completion-rate').textContent = '73%';
+  }
+
+  bindExportEvents() {
+    document.querySelectorAll('.export-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        this.exportData(btn.dataset.format);
+      });
+    });
+  }
+
+  exportData(format) {
+    const data = {
+      summary: {
+        totalArticles: 12,
+        totalReads: this.analytics.length,
+        avgReadingTime: this.analytics.length > 0 
+          ? Math.round(this.analytics.reduce((sum, item) => sum + item.readingTime, 0) / this.analytics.length / 60)
+          : 0,
+        totalBookmarks: this.bookmarks.length
+      },
+      analytics: this.analytics,
+      bookmarks: this.bookmarks,
+      exportDate: new Date().toISOString()
+    };
+
+    switch (format) {
+      case 'csv':
+        this.exportCSV(data);
+        break;
+      case 'json':
+        this.exportJSON(data);
+        break;
+      case 'pdf':
+        this.exportPDF(data);
+        break;
+    }
+  }
+
+  exportCSV(data) {
+    const csv = [
+      ['Metric', 'Value'],
+      ['Total Articles', data.summary.totalArticles],
+      ['Total Reads', data.summary.totalReads],
+      ['Avg Reading Time (min)', data.summary.avgReadingTime],
+      ['Total Bookmarks', data.summary.totalBookmarks],
+      [],
+      ['Reading Analytics'],
+      ['URL', 'Title', 'Reading Time (s)', 'Progress (%)', 'Timestamp'],
+      ...data.analytics.map(item => [
+        item.url,
+        item.title,
+        item.readingTime,
+        item.progress,
+        item.timestamp
+      ])
+    ].map(row => row.join(',')).join('\n');
+
+    this.downloadFile('analytics-report.csv', csv, 'text/csv');
+  }
+
+  exportJSON(data) {
+    this.downloadFile('analytics-data.json', JSON.stringify(data, null, 2), 'application/json');
+  }
+
+  exportPDF(data) {
+    window.print();
+  }
+
+  downloadFile(filename, content, mimeType) {
+    const blob = new Blob([content], { type: mimeType });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+}
+
+// Initialize dashboard
+document.addEventListener('DOMContentLoaded', () => {
+  new AnalyticsDashboard();
+});
+</script>
