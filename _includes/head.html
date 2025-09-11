@@ -2,28 +2,17 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#dc2626">
-
-<!-- Performance hints -->
-<link rel="dns-prefetch" href="//fonts.googleapis.com">
-<link rel="dns-prefetch" href="//fonts.gstatic.com">
-
-<!-- Preload critical resources -->
-<link rel="preload" href="{{ "/assets/css/docs.min.css" | relative_url }}" as="style">
-<link rel="preload" href="{{ "/assets/js/docs.min.js" | relative_url }}" as="script">
+<meta name="theme-color" content="#6366f1">
 
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="{{ "/assets/icons/favicon-optimized.svg" | relative_url }}">
 
-<!-- Fonts - Optimized loading -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
+<!-- Styles - Premium Swiss Design -->
+<link rel="preload" href="{{ "/assets/css/premium.css" | relative_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="{{ "/assets/css/premium.css" | relative_url }}"></noscript>
 
-<!-- Styles - Minified for performance -->
-<link rel="preload" href="{{ "/assets/css/docs.min.css" | relative_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="{{ "/assets/css/docs.min.css" | relative_url }}"></noscript>
+<!-- Performance Scripts -->
+<link rel="preload" href="{{ "/assets/js/docs.min.js" | relative_url }}" as="script">
 
 <!-- SEO Meta -->
 {% capture page_title %}{% if page.title %}{{ page.title | escape }} - {{ site.title | escape }}{% else %}{{ site.title | escape }} - {{ site.description | escape }}{% endif %}{% endcapture %}
